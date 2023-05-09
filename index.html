@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/codebugs.jpg" type="image/x-icon" />
+    <!-- font awesome link -->
+    <script
+      src="https://kit.fontawesome.com/5f219ec053.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- link file css -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <title>Tutorial</title>
+  </head>
+  <body>
+    <button class="open-btn">Open Modal</button>
+    <!-- <div class="overlay"></div> -->
+
+
+    <dialog data-modal>
+      <div class="modal-header">
+        <h1>This is a modal</h1>
+        <button class="close-btn">Close</button>
+      </div>
+      <div class="modal-content">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde dolores
+        ipsum suscipit adipisci possimus fuga, ullam minus dolorem totam
+        repudiandae pariatur, labore obcaecati, quaerat quia ipsam molestias
+        eaque. Debitis, rem!
+      </div>
+    </dialog>
+
+    <!-- <script src="./js/test.js"></script> -->
+    <script>
+      const openBtn = document.querySelector(".open-btn");
+      const modal = document.querySelector("[data-modal]");
+      const closeBtn = document.querySelector(".close-btn");
+
+      openBtn.addEventListener("click", function () {
+        modal.showModal();
+      });
+
+      closeBtn.addEventListener("click", function () {
+        modal.close();
+      });
+
+      // CLICK OUTSIDE
+      modal.addEventListener("click", (e) => {
+        const dialogDimensions = modal.getBoundingClientRect();
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          modal.close();
+        }
+      });
+    </script>
+  </body>
+</html>
